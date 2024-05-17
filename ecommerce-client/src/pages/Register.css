@@ -1,0 +1,80 @@
+.register-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-wrapper {
+  padding: 20px;
+  width: 40%;
+  background-color: bisque;
+}
+
+.register-wrapper h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.register-wrapper form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form > input {
+  flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0 0;
+  padding: 10px;
+}
+
+.agreement-text {
+  font-size: 13px;
+  margin: 20px 0;
+}
+
+button {
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: rgb(14, 219, 199);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 321px) {
+  .register-container {
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .register-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .register-wrapper form {
+    display: block;
+    text-align: center;
+    flex-wrap: nowrap;
+  }
+
+  .register-wrapper form input {
+    width: 80%;
+    text-align: center;
+  }
+  button {
+    display: block;
+    padding: 4px;
+    margin: auto;
+  }
+}

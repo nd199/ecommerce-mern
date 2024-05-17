@@ -1,0 +1,27 @@
+.ps-container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ps-container > h2{
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 380px) {
+    .ps-container{
+        width: 100%;
+        margin: auto;
+        max-width: 95%;
+        margin: auto;
+    }
+    .ps-container > h2{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}

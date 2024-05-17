@@ -1,0 +1,12 @@
+.order {
+  width: 100%;
+  padding: 10;
+  color: #fff;
+  font-weight: 600;
+}
+
+.order:hover {
+  cursor: pointer;
+  border: 2px solid aqua;
+}
+

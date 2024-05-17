@@ -1,0 +1,133 @@
+.s-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  background-color: #ededed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+.slide-wrapper {
+  display: flex;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+  padding: 0;
+}
+
+.slider {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.img-container {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container img {
+  height: 80%;
+  width: auto;
+}
+
+.info-container {
+  flex: 1;
+  padding: 40px;
+}
+
+.info-container .title {
+  font-size: 30px;
+}
+
+.info-container .desc {
+  margin: 50px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  width: 400px;
+}
+
+.info-container button {
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 328px) {
+  .img-container img {
+    position: absolute;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .slider {
+    width: 100vw;
+    margin: auto;
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .arrow {
+    top: 35%;
+    bottom: 60%;
+  }
+
+  .img-container img {
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    height: 80%;
+  }
+
+  .title h1 {
+    font-size: 15px;
+  }
+
+  .info-container > .desc {
+    font-size: 12px;
+    width: 40%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding: 0;
+  }
+
+  .info-container button {
+    display: none;
+  }
+}

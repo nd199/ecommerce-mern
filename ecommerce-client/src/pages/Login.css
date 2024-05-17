@@ -1,0 +1,96 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper {
+  padding: 20px;
+  width: 25%;
+  background-color: bisque;
+}
+
+.login-wrapper h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > input {
+  flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0 0;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.button {
+  margin: 30px auto;
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: rgb(14, 219, 199);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+@media screen and (max-width: 321px) {
+  .login-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-wrapper {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .login-wrapper h1{
+    text-align: center;
+  }
+
+  .login-wrapper h1 {
+    font-size: 20px;
+  }
+
+  .login-wrapper form {
+    text-align: center;
+  }
+
+  .login-wrapper form input {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .button {
+    width: 80%;
+    margin: 20px auto;
+  }
+}

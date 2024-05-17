@@ -1,0 +1,46 @@
+.ci-container {
+  flex: 1;
+  margin: 3px;
+  height: 60vh;
+  position: relative;
+}
+
+.ci-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info h1 {
+  color: #fff;
+  margin: 20px;
+}
+
+.info button {
+  border: none;
+  padding: 10px;
+  background-color: #fff;
+  color: #777;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media (min-width: 328px) and (max-width: 575.98px) {
+  .c-container {
+    width: 100%;
+    margin: 10px 10px;
+    flex-direction: column;
+  }
+}
