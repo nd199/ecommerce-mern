@@ -31,16 +31,16 @@ const Slider = () => {
           <div
             className="slider"
             style={{ background: `#${item.bg}` }}
-            key={item.index}
+            key={index}
           >
             <div className="img-container">
               <img
                 src={item.img}
                 alt={item.title}
                 style={{
-                  height: "80%",
+                  height: "90%",
                   objectFit: "cover",
-                  ...(index === 1 || index === 2 ? { height: "50%" } : {}),
+                  ...(index === 1 || index === 2 ? { height: "90%" } : {}),
                 }}
               />
             </div>

@@ -1,9 +1,5 @@
 const Product = require("../models/Product");
-const bCrypt = require("bcrypt");
-const {
-  verifyAndAdmin,
-} = require("../configurations/verifyToken");
-
+const { verifyAndAdmin } = require("../configurations/verifyToken");
 const router = require("express").Router();
 
 //CREATE
@@ -17,6 +13,7 @@ router.post("/", verifyAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 // UPDATE
 router.put("/:id", verifyAndAdmin, async (req, res) => {

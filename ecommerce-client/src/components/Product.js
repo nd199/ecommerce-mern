@@ -3,6 +3,7 @@ import "./Product.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Link } from "react-router-dom";
 
 const Product = ({ item }) => {
   return (
@@ -11,9 +12,11 @@ const Product = ({ item }) => {
       <img src={item.img} alt="" />
       <div className="p-info">
         <div className="icons">
-          <ShoppingCartIcon className="icon"/>
-          <SearchIcon className="icon"/>
-          <FavoriteIcon className="icon"/>
+          <ShoppingCartIcon className="icon" />
+          <Link to={`/Product/${item._id}`}>
+            <SearchIcon className="icon" />
+          </Link>
+          <FavoriteIcon className="icon" />
         </div>
       </div>
     </div>

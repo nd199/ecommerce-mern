@@ -1,23 +1,23 @@
 export const sliderItems = [
   {
     id: 1,
-    img: "/images/hw.png",
+    img: "/images/Family.png",
     title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    desc: "Explore the Latest Trends in Family Fashion: Stylish Outfits for Every Member, From Toddlers to Adults, All in One Place",
     bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/DG69bQ4/2.png",
+    img: "/images/hw.png",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
   {
     id: 3,
-    img: "https://i.ibb.co/cXFnLLV/3.png",
-    title: "LOUNGEWEAR LOVE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    img: "/images/boy.png",
+    title: "FORMAL WEAR",
+    desc: "GET READY COLLEGE WITH STYLISH NEW SHIRTS AND JEANS",
     bg: "fbf0f4",
   },
 ];
@@ -27,16 +27,19 @@ export const categories = [
     id: 1,
     img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     title: "SHIRT STYLE!",
+    category: "Woman",
   },
   {
     id: 2,
-    img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    title: "LOUNGEWEAR LOVE",
+    img: "https://c0.wallpaperflare.com/preview/400/572/15/iphone-x-beside-apple-watch-and-airpods.jpg",
+    title: "ELECTRONICS",
+    category: "Electronics",
   },
   {
     id: 3,
-    img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    title: "LIGHT JACKETS",
+    img: "https://plus.unsplash.com/premium_photo-1682088356987-33bbbb26d650?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdyb2NlcnklMjBzaG9wcGluZ3xlbnwwfHwwfHx8MA%3D%3D",
+    title: "GROCERIES",
+    category: "grocery",
   },
 ];
 

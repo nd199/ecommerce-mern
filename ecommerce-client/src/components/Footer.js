@@ -16,10 +16,10 @@ const Footer = () => {
           <h1>codeNaren.</h1>
         </div>
         <div className="f-desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-          animi voluptatum quidem dolorum, expedita dolore facere iste libero,
-          omnis non, ex suscipit modi perferendis unde. Suscipit fugiat placeat
-          velit totam.
+          CodeNaren Clothing Store, your one-stop shop for the latest fashion
+          trends. Our online store offers a wide range of clothing options for
+          men, women, and children, ensuring that everyone can find something
+          they love.
         </div>
         <div className="social-container">
           <div className="s-icon">
@@ -79,7 +79,11 @@ const Footer = () => {
             <p>naren06251999@gmail.com</p>
           </div>
         </div>
-        <img src="https://i.ibb.co/Qfvn4z6/payment.png" alt="" className="payment" />
+        <img
+          src="https://i.ibb.co/Qfvn4z6/payment.png"
+          alt=""
+          className="payment"
+        />
       </div>
     </div>
   );
