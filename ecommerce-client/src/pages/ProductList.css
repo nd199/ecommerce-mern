@@ -1,16 +1,56 @@
 .filter-container h1 {
-  margin: 20px;
+  margin: 20px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filter {
+  margin-left: 15px;
+}
+
+
+.filter:nth-of-type(2){
+  margin-left: 50px;
 }
 
 .filters {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  align-items: center;
+  margin: 10px 30px;
 }
 
-.filter {
-  display: flex;
-  align-items: center;
+.reset-Button {
+  width: 100%;
+  transition: width 0.3s;
+}
+
+.reset-Button:hover {
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgb(4, 74, 90),
+    rgba(57, 255, 255, 0.963)
+  );
+  animation: buttonGradient 1s infinite alternate;
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 select {
@@ -23,19 +63,30 @@ select {
 }
 
 @media screen and (max-width: 360px) {
-  .filter-container{
+  .filter-container {
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 100%;
   }
-
-  .filters{
+  .filter-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     gap: 20px;
   }
 
-  .filter{
+  .filter {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  .filters {
+    gap: 20px;
+  }
+
+  .filter {
     justify-content: space-between;
   }
 }
-

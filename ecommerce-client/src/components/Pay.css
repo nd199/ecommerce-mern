@@ -1,12 +1,21 @@
-.order {
+.pay {
   width: 100%;
-  padding: 10;
-  color: #fff;
-  font-weight: 600;
+  height: 135px;
+  padding: 20px;
+  background-color: rgb(163, 247, 242);
+  border-radius: 20px;
 }
 
-.order:hover {
-  cursor: pointer;
-  border: 2px solid aqua;
+
+.paypal-logo{
+  width: 200px;
+  height: 200px !important;
+}
+
+
+
+
+
+.paypal-buttons {
 }
 

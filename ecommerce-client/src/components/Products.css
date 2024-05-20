@@ -8,8 +8,6 @@
     display: none;
 }
 
-
-
 @media only screen and (max-width: 380px) {
     .ps-container{
         width: 100%;
