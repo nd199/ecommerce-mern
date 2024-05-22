@@ -32,12 +32,6 @@ function App() {
           <Route path="/Register" element={<Register />} />
         </Routes>
       </Router>
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <Product /> */}
-      {/* <Register /> */}
-      {/* <Login /> */}
-      {/* <Cart /> */}
     </div>
   );
 }
