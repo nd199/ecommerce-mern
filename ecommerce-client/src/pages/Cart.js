@@ -4,10 +4,9 @@ import "./Cart.css";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import Pay from "../components/Pay";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -34,7 +33,9 @@ const Cart = () => {
           <h1>YOUR BAG</h1>
         </div>
         <div className="top">
-          <div className="top-button">CONTINUE SHOPPING</div>
+          <Link to={"/Products"}>
+            <div className="top-button">CONTINUE SHOPPING</div>
+          </Link>
           <div className="top-texts">
             <div className="top-text">Shopping Bag(2)</div>
             <div className="top-text">Your Wishlist(0)</div>
@@ -89,13 +90,7 @@ const Cart = () => {
                 </div>
                 <div className="price-details">
                   <div className="pa-container">
-                    <button className="remove">
-                      <RemoveOutlinedIcon className="a-icon" />
-                    </button>
                     <div className="amount">{product.quantity}</div>
-                    <button className="add">
-                      <AddOutlinedIcon className="a-icon" />
-                    </button>
                   </div>
                   <span className="p-price">$ {product.price}</span>
                 </div>

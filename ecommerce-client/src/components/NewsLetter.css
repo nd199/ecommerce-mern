@@ -38,7 +38,7 @@
 }
 
 .input-container:hover {
-  border: 1px solid #777;
+  border: 2px solid;
 }
 
 .input-container button {
@@ -52,6 +52,7 @@
 .input-container button:hover {
   color: #000;
 }
+
 
 @media (min-width: 328px) and (max-width: 575.98px) {
   .n-container {

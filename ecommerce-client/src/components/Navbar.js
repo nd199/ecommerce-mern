@@ -28,8 +28,15 @@ const Navbar = () => {
           </div>
         </div>
         <div className="right">
-          <div className="menu-item">REGISTER</div>
-          <div className="menu-item">SIGN IN</div>
+          <Link to={"/"}>
+            <div className="menu-item">HOME</div>
+          </Link>
+          <Link to={"/Register"}>
+            <div className="menu-item">REGISTER</div>
+          </Link>
+          <Link to={"/Login"}>
+            <div className="menu-item">SIGN IN</div>
+          </Link>
           <Link to={"/Cart"}>
             <Badge
               badgeContent={totalQuantity}

@@ -36,13 +36,13 @@ const ProductList = () => {
     <div className="pl-container">
       <NavBar />
       <Announcement />
-      <div className="filter-container">
+      <div className="pl-filter-container">
         <div className="pl-title">
           <h1>Our Products</h1>
         </div>
-        <div className="filters">
-          <div className="filter">
-            <span className="filter-text">Filter Products :</span>
+        <div className="pl-filters">
+          <div className="pl-filter">
+            <span className="pl-filter-text">Filter Products :</span>
             <div className="select">
               <select name="color" onChange={changeFilterHandler}>
                 <option value="" disabled>
@@ -81,8 +81,8 @@ const ProductList = () => {
               </select>
             </div>
           </div>
-          <div className="filter">
-            <span className="filter-text">Sort Products: </span>
+          <div className="pl-filter">
+            <span className="pl-filter-text">Sort Products: </span>
             <select
               value={sorting}
               onChange={(e) => setSorting(e.target.value)}

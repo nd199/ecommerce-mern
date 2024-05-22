@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { login } from "../redux/ApiCalls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -31,12 +33,23 @@ const Login = () => {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="button" onClick={loginHandler}>
+            <button
+              className="button"
+              onClick={loginHandler}
+              disabled={isFetching}
+            >
               LOGIN
             </button>
+            {error && (
+              <div className="error">
+                <span>Oops Something Went Wrong!...</span>
+              </div>
+            )}
             <div className="links">
               <a href="#">FORGOT PASSWORD?</a>
-              <a href="#">CREATE A NEW ACCOUNT</a>
+              <Link to={"/Register"}>
+                <a href="#">CREATE A NEW ACCOUNT</a>
+              </Link>
             </div>
           </form>
         </div>

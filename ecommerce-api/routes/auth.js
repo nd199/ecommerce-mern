@@ -2,14 +2,16 @@ const User = require("../models/User");
 const bCrypt = require("bcrypt");
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const { generateOrRetrieveSKey } = require("../configurations/config");
+const nodemailer = require("nodemailer");
+const mailGen = require("mailgen");
 
 //REGISTER
+
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.status(404).json({ message: "Please enter all fields" });
+    return res.status(400).json({ message: "Please enter all fields" });
   }
 
   try {
@@ -17,12 +19,56 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bCrypt.hash(password, salt);
 
     const newUser = new User({
+      name,
+      lastName,
       username,
       email,
       password: hashedPassword,
     });
 
     const user = await newUser.save();
+
+    let config = {
+      service: "gmail",
+      auth: {
+        user: "codenaren@gmail.com",
+        pass: "ogipvbgyfznuksip",
+      },
+    };
+
+    let transport = nodemailer.createTransport(config);
+    let mailGenerator = new mailGen({
+      theme: "default",
+      product: {
+        name: "mailGen",
+        link: "https://mailgen.js/",
+      },
+    });
+
+    let response = {
+      body: {
+        name: username,
+        intro: "You Registered Successfully",
+        table: {
+          data: [
+            {
+              item: "Welcome!",
+              description: "You have successfully registered.",
+            },
+          ],
+        },
+      },
+    };
+
+    let mail = mailGenerator.generate(response);
+    let message = {
+      from: "codenaren@gmail.com",
+      to: email,
+      subject: "Registration Successful",
+      html: mail,
+    };
+
+    await transport.sendMail(message);
 
     res.status(201).json(user);
   } catch (err) {
@@ -31,20 +77,21 @@ router.post("/register", async (req, res) => {
     if (err.code === 11000 && err.keyPattern && err.keyPattern.email) {
       return res.status(400).json({ error: "Email is already registered" });
     }
+
     res.status(500).json({ error: "An error occurred while registering user" });
   }
 });
 
 // LOGIN
 router.post("/login", async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!username || !email || !password) {
+  if (!username || !password) {
     return res.status(400).json({ message: "Please enter all fields" });
   }
 
   try {
-    const user = await User.findOne({ $or: [{ username }, { email }] });
+    const user = await User.findOne({ username });
 
     if (!user) {
       return res

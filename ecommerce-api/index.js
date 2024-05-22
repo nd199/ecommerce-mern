@@ -26,6 +26,6 @@ app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 
-app.listen(process.env.PORT_NO, () =>
-  console.log("Backend =>  http://localhost:8000")
+app.listen(process.env.PORT_NO || 8070, () =>
+  console.log("Backend =>  `http://localhost:8000`")
 );

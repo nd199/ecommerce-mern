@@ -3,6 +3,7 @@ import "./Slider.css";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { sliderItems } from "../Data";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -58,7 +59,9 @@ const Slider = () => {
                 <h1>{item.title}</h1>
               </div>
               <div className="desc">{item.desc} </div>
-              <button type="button">SHOW NOW</button>
+              <Link to={"/Products"}>
+                <button type="slide-button">SHOW NOW</button>
+              </Link>
             </div>
           </div>
         ))}

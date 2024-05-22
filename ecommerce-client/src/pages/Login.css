@@ -42,6 +42,18 @@ form > input {
   cursor: pointer;
 }
 
+.button:disabled{
+  background-color: rgb(14, 219, 199);
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.error{
+  color: red;
+  margin: 10px auto;
+  text-align: center;
+}
+
 .links {
   display: flex;
   align-items: center;
@@ -72,7 +84,7 @@ a {
     padding: 20px;
   }
 
-  .login-wrapper h1{
+  .login-wrapper h1 {
     text-align: center;
   }
 

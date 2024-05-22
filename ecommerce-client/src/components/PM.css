@@ -1,0 +1,35 @@
+.amount-container {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid rgb(100, 205, 205);
+  margin: 0 5px;
+}
+
+.a-icon {
+  border: none;
+}
+
+.add,
+.remove {
+  width: 20px;
+  height: 10px;
+  background-color: teal;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: 0 5px;
+}

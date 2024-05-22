@@ -80,8 +80,25 @@
 .info-container button {
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
   cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(
+    to right,
+    rgb(4, 74, 90),
+    rgba(57, 255, 255, 0.963)
+  );
+  animation: buttonGradient 3s infinite alternate;
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 @media screen and (max-width: 328px) {

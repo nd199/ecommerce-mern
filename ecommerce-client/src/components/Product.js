@@ -9,7 +9,7 @@ const Product = ({ item }) => {
   return (
     <div className="p-container">
       <div className="circle"></div>
-      <img src={item.img} alt="" />
+      <img src={item.img} alt="" style={{objectFit:"contain"}}/>
       <div className="p-info">
         <div className="icons">
           <ShoppingCartIcon className="icon" />

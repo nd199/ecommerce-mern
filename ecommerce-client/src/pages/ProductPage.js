@@ -4,12 +4,13 @@ import NavBar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../AxiosMethods";
 import { addItemToCart } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import ProductNumberManagement from "../components/ProductNumberManagement";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ProductPage = () => {
   const location = useLocation();
@@ -22,6 +23,8 @@ const ProductPage = () => {
   let pricePerItem = products.price;
   const [total, setTotal] = useState(pricePerItem);
   const [showColorSize, setShowColorSize] = useState(true);
+  const [slide, setSlide] = useState(0);
+  const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -55,13 +58,33 @@ const ProductPage = () => {
     dispatch(addItemToCart({ ...products, quantity, color, size }));
   };
 
+  const colorImageHandler = (color, index) => {
+    if (color !== null) {
+      setColor(color);
+      setSlide(index);
+    }
+    setDisableBtn(disableBtn);
+  };
+
   return (
     <div className="sp-container">
       <NavBar />
       <Announcement />
       <div className="sp-wrapper">
         <div className="sp-image-container">
-          <img src={products.img} alt="" style={{ objectFit: "contain" }} />
+          <div className="img-slide">
+            {products.img?.map((img, index) => (
+              <img
+                src={img}
+                alt=""
+                key={index}
+                style={{
+                  display: slide === index ? "block" : "none",
+                  objectFit: "contain",
+                }}
+              />
+            ))}
+          </div>
         </div>
         <div className="sp-info-container">
           <div
@@ -76,7 +99,7 @@ const ProductPage = () => {
           <div className="price">
             <div>
               <p style={{ fontSize: "40px", marginTop: "5px" }}>
-                ${quantity === 1 ? pricePerItem : total}
+                &#x20B9; {quantity === 1 ? pricePerItem : total}
               </p>
             </div>
           </div>
@@ -84,12 +107,12 @@ const ProductPage = () => {
             <div className="filter-container">
               <div className="filter">
                 <h3>Color</h3>
-                {products.color?.map((color) => (
+                {products.color?.map((color, index) => (
                   <div
                     className="f-color"
                     style={{ backgroundColor: color }}
                     key={color}
-                    onClick={() => setColor(color)}
+                    onClick={() => colorImageHandler(color, index)}
                   ></div>
                 ))}
               </div>
@@ -109,18 +132,15 @@ const ProductPage = () => {
             </div>
           )}
           <div className="add-to-cart">
-            <div className="amount-container">
-              <button className="remove" onClick={() => quantityHandler("dec")}>
-                <RemoveOutlinedIcon className="a-icon" />
+            <ProductNumberManagement
+              quantityHandler={quantityHandler}
+              quantity={quantity}
+            />
+            {disableBtn && (
+              <button className="add-cart" onClick={clickHandler}>
+                ADD TO CART
               </button>
-              <div className="amount">{quantity}</div>
-              <button className="add" onClick={() => quantityHandler("inc")}>
-                <AddOutlinedIcon className="a-icon" />
-              </button>
-            </div>
-            <button className="add-cart" onClick={clickHandler}>
-              ADD TO CART
-            </button>
+            )}
           </div>
         </div>
       </div>

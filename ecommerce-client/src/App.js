@@ -5,16 +5,16 @@ import Login from "./pages/Login";
 import Product from "./pages/ProductPage";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function App() {
-  const user = false;
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="">

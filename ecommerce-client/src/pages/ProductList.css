@@ -1,28 +1,31 @@
-.filter-container h1 {
-  margin: 20px auto;
-  width: 100%;
+.pl-filter-container h1 {
+  margin: 10px;
+}
+
+.pl-filter-container {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  gap: 20px;
+}
+
+.pl-filter {
+  display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.filter-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.filter {
   margin-left: 15px;
 }
 
+.pl-filter-text{
+  font-weight: 650;
+}
 
-.filter:nth-of-type(2){
+
+.pl-filter:nth-of-type(2){
   margin-left: 50px;
 }
 
-.filters {
+.pl-filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,12 +33,13 @@
 }
 
 .reset-Button {
-  width: 100%;
+  width: 350px;
+  margin: auto;
   transition: width 0.3s;
 }
 
 .reset-Button:hover {
-  width: 100%;
+  width: 450px;
   background: linear-gradient(
     to right,
     rgb(4, 74, 90),
@@ -58,35 +62,35 @@ select {
   margin-left: 10px;
 }
 
-.filter-text {
+.pl-filter-text {
   font-size: 20px;
 }
 
 @media screen and (max-width: 360px) {
-  .filter-container {
+  .pl-filter-container {
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 100%;
   }
-  .filter-container {
+  .pl-filter-container {
     display: flex;
     flex-direction: row;
     width: 100%;
     gap: 20px;
   }
 
-  .filter {
+  .pl-filter {
     flex: 1;
     margin: 0;
     padding: 0;
   }
 
-  .filters {
+  .pl-filters {
     gap: 20px;
   }
 
-  .filter {
+  .pl-filter {
     justify-content: space-between;
   }
 }
