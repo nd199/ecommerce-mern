@@ -1,12 +1,13 @@
-const User = require("../models/User");
+const express = require("express");
 const bCrypt = require("bcrypt");
-const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const mailGen = require("mailgen");
+const User = require("../models/User");
 
-//REGISTER
+const router = express.Router();
 
+// Registration route
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -15,15 +16,19 @@ router.post("/register", async (req, res) => {
   }
 
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email is already registered" });
+    }
+
     const salt = await bCrypt.genSalt(10);
     const hashedPassword = await bCrypt.hash(password, salt);
 
     const newUser = new User({
-      name,
-      lastName,
       username,
       email,
       password: hashedPassword,
+      online: true,
     });
 
     const user = await newUser.save();
@@ -37,6 +42,7 @@ router.post("/register", async (req, res) => {
     };
 
     let transport = nodemailer.createTransport(config);
+
     let mailGenerator = new mailGen({
       theme: "default",
       product: {
@@ -61,6 +67,7 @@ router.post("/register", async (req, res) => {
     };
 
     let mail = mailGenerator.generate(response);
+
     let message = {
       from: "codenaren@gmail.com",
       to: email,
@@ -70,7 +77,9 @@ router.post("/register", async (req, res) => {
 
     await transport.sendMail(message);
 
-    res.status(201).json(user);
+    const { password: _, ...userWithoutPassword } = user.toObject();
+
+    res.status(201).json({ ...userWithoutPassword });
   } catch (err) {
     console.error("Error registering user:", err);
 
@@ -86,12 +95,9 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ message: "Please enter all fields" });
-  }
-
   try {
     const user = await User.findOne({ username });
+    console.log(user);
 
     if (!user) {
       return res
@@ -119,9 +125,14 @@ router.post("/login", async (req, res) => {
       expiresIn: "3d",
       algorithm: "HS256",
     });
-    const { password: userPassword, ...remain } = user._doc;
+
+    const { password: userPassword, online, ...remain } = user._doc;
+
+    user.online = true;
+    await user.save();
 
     res.status(200).json({
+      isLoggedIn: true,
       message: "Logged in successfully",
       ...remain,
       accessToken: token,

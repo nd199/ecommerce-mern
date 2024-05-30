@@ -1,0 +1,63 @@
+.newUser {
+  flex: 4;
+  height: calc(100vh - 60px);
+  padding: 20px;
+}
+
+.nUForm {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.nuItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+}
+
+.nuItem > label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.nuItem > input {
+  height: 40px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.userGender > input {
+  margin-top: 15px;
+}
+
+.userGender > label {
+  margin: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+.newUserActiveSelect {
+  height: 40px;
+  border-radius: 5px;
+}
+
+.newUserButton {
+  width: 150px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  background-color: salmon;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 150px;
+  position: absolute;
+  left: 40%;
+  transform: translateX(-100%);
+}

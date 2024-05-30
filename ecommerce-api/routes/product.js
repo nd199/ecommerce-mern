@@ -3,7 +3,6 @@ const { verifyAndAdmin } = require("../configurations/verifyToken");
 const router = require("express").Router();
 
 //CREATE
-
 router.post("/", verifyAndAdmin, async (req, res) => {
   const newProduct = new Product(req.body);
   try {
@@ -13,7 +12,6 @@ router.post("/", verifyAndAdmin, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 // UPDATE
 router.put("/:id", verifyAndAdmin, async (req, res) => {
@@ -43,12 +41,11 @@ router.delete("/:id", verifyAndAdmin, async (req, res) => {
   try {
     const product = await Product.findById(productId);
     if (!product) {
-      return res.status(404).json({ error: "product not found" });
+      return res.status(404).json({ error: "Product not found" });
     }
+    await product.deleteOne();
 
-    await Product.deleteOne(product);
-
-    res.status(200).json({ message: "Deleted product", product });
+    res.status(200).json({ message: "Product deleted successfully", product });
   } catch (err) {
     console.error("Error deleting product:", err);
     res.status(500).json({ error: "Failed to delete product" });
@@ -56,7 +53,6 @@ router.delete("/:id", verifyAndAdmin, async (req, res) => {
 });
 
 // GET Product
-
 router.get("/:id", async (req, res) => {
   const productId = req.params.id;
 
@@ -97,7 +93,7 @@ router.get("/", async (req, res) => {
       return res.status(404).json({ error: "No products found" });
     }
 
-    res.status(200).json({ message: "Requested products", products });
+    res.status(200).json(products);
   } catch (err) {
     console.error("Error getting products:", err);
     res.status(500).json({ error: "Failed to get products" });

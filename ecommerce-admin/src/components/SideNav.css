@@ -1,0 +1,16 @@
+.sideNav {
+  flex: 0.7;
+  height: calc(100vh - 60px);
+  background-color: rgba(162, 242, 215, 0.1);
+  display: flex;
+  position: sticky;
+  top: 60px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.side-wrapper {
+  padding: 20px 0;
+  padding-left: 20px;
+  color: #333;
+}

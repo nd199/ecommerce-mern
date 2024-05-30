@@ -15,6 +15,10 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  const isLoggedIn = useSelector(
+    (state) => state.user?.currentUser?.isLoggedIn
+  );
+  console.log(isLoggedIn);
 
   return (
     <div className="">
@@ -29,7 +33,10 @@ function App() {
             path="/Login"
             element={user ? <Navigate to="/" /> : <Login />}
           />
-          <Route path="/Register" element={<Register />} />
+          <Route
+            path="/Register"
+            element={user ? <Navigate to="/" /> : <Register />}
+          />
         </Routes>
       </Router>
     </div>

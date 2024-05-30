@@ -39,7 +39,7 @@ export const categories = [
     id: 3,
     img: "https://plus.unsplash.com/premium_photo-1682088356987-33bbbb26d650?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdyb2NlcnklMjBzaG9wcGluZ3xlbnwwfHwwfHx8MA%3D%3D",
     title: "GROCERIES",
-    category: "grocery",
+    category: "groceries",
   },
 ];
 
