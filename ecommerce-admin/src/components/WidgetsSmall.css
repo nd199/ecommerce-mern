@@ -1,0 +1,68 @@
+.widgetSmall {
+  flex: 1;
+  box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -webkit-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -moz-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  color: red;
+  margin-top: 20px;
+}
+
+.wsTitle {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.wsImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wsList {
+  margin: 0;
+  padding: 0;
+}
+
+.wsListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.wsUser {
+  display: flex;
+  flex-direction: column;
+}
+
+.wsUsername {
+  font-weight: 600;
+}
+
+.wsUserTitle {
+  font-weight: 300;
+}
+
+.wsButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 10px;
+  background-color: #d3901d3f;
+  color: brown;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.ws-icon {
+  font-size: 16px !important;
+}

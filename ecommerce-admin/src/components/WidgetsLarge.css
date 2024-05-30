@@ -1,0 +1,61 @@
+.widgetLarge {
+  flex: 2;
+  box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -webkit-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -moz-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  padding: 20px;
+}
+
+.wl-Title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.wlTable {
+  width: 100%;
+  border-spacing: 20px;
+}
+
+.wlTh {
+  text-align: left;
+}
+.wlUser {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  gap: 5px;
+}
+
+.wlDate,
+.wlAmount {
+  font-weight: 400;
+  color: #777;
+}
+
+.wlImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.wlButton {
+  padding: 5px 7px;
+  border-radius: 10px;
+  border: 0;
+}
+
+.wlButton.approved {
+  background-color: rgba(144, 238, 144, 0.602);
+  color: darkgreen;
+}
+
+.wlButton.declined {
+  background-color: rgba(255, 182, 193, 0.432);
+  color: darkred;
+}
+
+.wlButton.pending {
+  background-color: rgba(255, 160, 122, 0.574);
+  color: brown;
+}

@@ -1,5 +1,8 @@
 const Order = require("../models/Order");
-const { verifyAndAuthorize, verifyAndAdmin, verifyToken } = require("../configurations/verifyToken");
+const {
+  verifyAndAdmin,
+  verifyToken,
+} = require("../configurations/verifyToken");
 const router = require("express").Router();
 
 // CREATE ORDER
@@ -67,6 +70,7 @@ router.get("/find/:userId", async (req, res) => {
     }
 
     res.status(200).json(orders);
+    w;
   } catch (err) {
     console.error("Error getting order by ID:", err);
     res.status(500).json({ error: "Failed to get order" });
@@ -77,11 +81,9 @@ router.get("/find/:userId", async (req, res) => {
 router.get("/", verifyAndAdmin, async (req, res) => {
   try {
     const orders = await Order.find();
-
     if (!orders || orders.length === 0) {
       return res.status(404).json({ error: "No orders found" });
     }
-
     res.status(200).json({ message: "Requested orders", orders });
   } catch (err) {
     console.error("Error getting all orders:", err);
@@ -91,13 +93,23 @@ router.get("/", verifyAndAdmin, async (req, res) => {
 
 // GET ORDER INCOME STATISTICS
 router.get("/income", verifyAndAdmin, async (req, res) => {
+  const productId = req.query.id;
   try {
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-    const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
+    const previousMonth = new Date(
+      new Date().setMonth(lastMonth.getMonth() - 1)
+    );
 
     const income = await Order.aggregate([
-      { $match: { createdAt: { $gte: previousMonth } } },
+      {
+        $match: {
+          createdAt: { $gte: previousMonth },
+          ...(productId && {
+            products: { $elementMatch: { productId } },
+          }),
+        },
+      },
       {
         $group: {
           _id: { $month: "$createdAt" },

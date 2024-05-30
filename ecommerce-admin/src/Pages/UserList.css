@@ -1,0 +1,62 @@
+.ulist {
+  width: 100%;
+  height: calc(100vh - 60px);
+  flex: 4;
+  overflow: hidden;
+}
+
+.header-class {
+  text-align: center !important;
+}
+
+.ulUser {
+  display: flex;
+  align-items: center;
+}
+
+.ulImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.ulActions {
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ulActions:hover,
+.ulActions:focus {
+  border: none;
+  outline: none;
+}
+
+.ulEdit {
+  font-size: 30px !important;
+  margin: 0;
+  border-radius: 10px;
+  background-color: green;
+  padding: 2px;
+  color: white;
+  cursor: pointer;
+}
+
+.ulDelete {
+  background-color: red;
+  font-size: 30px !important;
+  border-radius: 10px;
+  padding: 2px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.ulEdit:hover,
+.ulDelete:hover {
+  font-size: 35px !important;
+}

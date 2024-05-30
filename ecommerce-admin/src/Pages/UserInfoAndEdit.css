@@ -1,0 +1,153 @@
+.uEdit {
+  flex: 4;
+  height: calc(100vh - 60px);
+  padding: 20px;
+}
+
+.uTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userAdd {
+  width: 80px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #4caf50;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+}
+
+.uContainer {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.uInfo {
+  flex: 1;
+  box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -webkit-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -moz-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  padding: 20px;
+}
+
+.uUpdate {
+  flex: 2;
+  box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -webkit-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  -moz-box-shadow: 2px 4px 58px 4px rgba(222, 137, 37, 0.29);
+  padding: 20px;
+}
+
+.uInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 20px;
+}
+
+.userInfoImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.uInfoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.uInfoName {
+  font-weight: 600;
+}
+
+.uInfoTitle {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.userInfoTitle {
+  font-size: 23px;
+  font-weight: 600;
+  color: navajowhite;
+}
+
+.uInfoMore {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #333;
+  gap: 20px;
+}
+
+.userUpdateTitle {
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.userUpdateForm {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+}
+
+.uUpLeftItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.uUpLeftItem > label {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.userUpInput {
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 5px;
+  width: 250px;
+  height: 30px;
+}
+
+.uUpRightUpload {
+  display: flex;
+  align-items: center;
+}
+
+.uUpRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userUpdateImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10%;
+  margin-right: 20px;
+}
+
+.uUpdateIcon {
+  cursor: pointer;
+}
+
+.userUpdateButton {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  background-color: salmon;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}

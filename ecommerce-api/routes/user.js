@@ -44,7 +44,7 @@ router.delete("/:id", verifyAndAuthorize, async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    await User.deleteOne(user);
+    await User.deleteOne({ _id: userId }); // Correct usage of deleteOne()
 
     res.status(200).json({ message: "Deleted user", user });
   } catch (err) {
@@ -78,15 +78,18 @@ router.get("/", verifyAndAdmin, async (req, res) => {
   const query = req.query.new;
 
   try {
-    const users = query
-      ? await User.find().sort({ _id: -1 }).limit(1)
-      : await User.find();
+    let users;
+    if (query) {
+      users = await User.find({ isAdmin: false }).sort({ _id: -1 }).limit(5);
+    } else {
+      users = await User.find({ isAdmin: false });
+    }
 
-    if (!users) {
+    if (!users || users.length === 0) {
       return res.status(404).json({ error: "No users found" });
     }
 
-    res.status(200).json({ message: "Requested users", users });
+    res.status(200).json(users);
   } catch (err) {
     console.error("Error getting users:", err);
     res.status(500).json({ error: "Failed to get users" });
@@ -94,16 +97,16 @@ router.get("/", verifyAndAdmin, async (req, res) => {
 });
 
 // GET USER STATISTICS
-router.get("/stats", verifyAndAdmin, async (req, res) => {
+router.get("/all/stats", verifyAndAdmin, async (req, res) => {
   const date = new Date();
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  const year = new Date(date.getFullYear(), 0, 1);
 
   try {
     const data = await User.aggregate([
-      { $match: { createdAt: { $gte: lastYear } } },
+      { $match: { createdAt: { $gte: year } } },
       {
         $project: {
-          month: { $month: "$createdAt" },
+          month: { $month: "$updatedAt" },
         },
       },
       {
@@ -113,7 +116,7 @@ router.get("/stats", verifyAndAdmin, async (req, res) => {
         },
       },
     ]);
-
+    console.log(data);
     res.status(200).json(data);
   } catch (err) {
     console.error("Error getting user statistics:", err);

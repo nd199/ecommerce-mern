@@ -1,0 +1,43 @@
+.s-menu {
+  margin: 5px 0px;
+}
+
+.s-title {
+  font-size: 11px;
+  color: rgba(66, 70, 67, 0.568);
+}
+
+.s-list {
+  padding: 10px;
+}
+
+.s-listItem {
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.i-link {
+  color: black;
+}
+
+.s-listItem:hover {
+  background-color: rgba(26, 237, 167, 0.3);
+  border: none;
+  border-radius: 10px;
+}
+
+.s-i-item {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.s-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 25px !important;
+}

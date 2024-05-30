@@ -19,8 +19,9 @@ const Products = ({ category, filters, sorting }) => {
               }`
             : `http://localhost:8000/api/Products`
         );
-        setProducts(response.data.products);
-        setFilteredProducts(response.data.products);
+        setProducts(response.data);
+        setFilteredProducts(response.data);
+       
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +59,7 @@ const Products = ({ category, filters, sorting }) => {
   return (
     <div className="ps-container">
       <h2>Products</h2>
-      {filteredProducts.map((product, index) => (
+      {filteredProducts?.map((product, index) => (
         <Product item={product} key={index} />
       ))}
     </div>

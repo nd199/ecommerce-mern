@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Slider.css";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
@@ -16,6 +16,18 @@ const Slider = () => {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlideIndex((prevIndex) =>
+        prevIndex < sliderItems.length - 1 ? prevIndex + 1 : 0
+      );
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className="s-container">
       <div className="arrow arrow-left" onClick={() => handleClick("left")}>
@@ -25,7 +37,7 @@ const Slider = () => {
         className="slide-wrapper"
         style={{
           transform: `translateX(${-slideIndex * 100}vw)`,
-          transition: "transform 0.5s ease-in-out",
+          transition: "transform 3s ease-in-out",
         }}
       >
         {sliderItems.map((item, index) => (

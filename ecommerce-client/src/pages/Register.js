@@ -1,27 +1,43 @@
 import React, { useState } from "react";
 import "./Register.css";
 import { register } from "../redux/ApiCalls";
-import { useDispatch} from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
-  const [error, showError] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const userRegHandler = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      console.log(password === confirmPassword);
-      register(dispatch, { name, lastName, email, username, password });
-    } else {
-      showError(true);
+    setError(false);
+    setSuccess(false);
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
     }
+    if (!firstname || !lastname || !email || !username || !password) {
+      setError("Please fill out all fields");
+      return;
+    }
+
+    register(dispatch, { firstname, lastname, email, username, password })
+      .then(() => {
+        setSuccess("Registration successful");
+        navigate("/Login");
+      })
+      .catch(() => {
+        setError("Registration failed. Please try again");
+      });
   };
 
   return (
@@ -30,35 +46,41 @@ const Register = () => {
         <div>
           <h1>CREATE AN ACCOUNT</h1>
         </div>
-        <form action="/register" method="post">
+        <form method="post" onSubmit={userRegHandler}>
           <input
             type="text"
-            placeholder="name"
-            onChange={(e) => setName(e.target.value)}
+            placeholder="First Name"
+            value={firstname}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <input
             type="text"
-            placeholder="last-name"
+            placeholder="Last Name"
+            value={lastname}
             onChange={(e) => setLastName(e.target.value)}
           />
           <input
             type="text"
-            placeholder="username"
+            placeholder="Username"
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="email"
-            placeholder="email"
+            placeholder="Email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="password"
+            placeholder="Password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type="password"
-            placeholder="confirm-password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <div className="agreement">
@@ -70,13 +92,18 @@ const Register = () => {
               </a>
             </div>
           </div>
-          <button onClick={userRegHandler}>CREATE</button>
-          {error && (
-            <div className="error">
-              <span>Oops Something Went Wrong!...</span>
-            </div>
-          )}
+          <button type="submit">CREATE</button>
         </form>
+        {error && (
+          <div className="error">
+            <span>{error}</span>
+          </div>
+        )}
+        {success && (
+          <div className="success">
+            <span>{success}</span>
+          </div>
+        )}
       </div>
     </div>
   );

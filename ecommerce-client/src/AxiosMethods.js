@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const Base_url = "http://localhost:8000/api/";
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGRiMDcwODJiOTY1ODg4ZjVmYzJhZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcxNjM2NzY3OSwiZXhwIjoxNzE2NjI2ODc5fQ.Q1c81frm2Md4v7AFDiDDP_arE9yXxn_P6j-o07KBmjg";
 
 export const publicRequest = axios.create({
   baseURL: Base_url,
@@ -10,5 +8,27 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
   baseURL: Base_url,
-  headers: { token: `Bearer ${TOKEN}` },
 });
+
+userRequest.interceptors.request.use(
+  (config) => {
+    const storedData = localStorage.getItem("persist:root");
+    let accessToken = null;
+
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      const user = parsedData ? parsedData.user : null;
+      const currentUser = user ? user.currentUser : null;
+      accessToken = currentUser ? currentUser.accessToken : null;
+    }
+
+    if (accessToken) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);

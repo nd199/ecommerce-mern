@@ -8,7 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
           <div>
             <h1>SIGN IN</h1>
           </div>
-          <form action="" method="post">
+          <form method="post">
             <input
               type="text"
               placeholder="username"
@@ -33,11 +33,7 @@ const Login = () => {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button
-              className="button"
-              onClick={loginHandler}
-              disabled={isFetching}
-            >
+            <button className="button" onClick={loginHandler}>
               LOGIN
             </button>
             {error && (
@@ -46,10 +42,8 @@ const Login = () => {
               </div>
             )}
             <div className="links">
-              <a href="#">FORGOT PASSWORD?</a>
-              <Link to={"/Register"}>
-                <a href="#">CREATE A NEW ACCOUNT</a>
-              </Link>
+              <Link to={"/forgotPassword"}>FORGOT PASSWORD?</Link>
+              <Link to={"/Register"}>CREATE A NEW ACCOUNT</Link>
             </div>
           </form>
         </div>
