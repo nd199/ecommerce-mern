@@ -1,5 +1,5 @@
 # ecommerce-mern
-
+A beginner level full flex Ecommerce Store with admin panel 
 
 
 ## Technologies Used
